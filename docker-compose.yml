@@ -1,0 +1,13 @@
+#version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    ports:
+      - "8090:5000"
+    environment:
+      - FLASK_ENV=production
+      - PORT=5000
+    volumes:
+      - .:/app
+    restart: unless-stopped

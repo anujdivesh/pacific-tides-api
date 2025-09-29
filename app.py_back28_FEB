@@ -1,0 +1,33 @@
+from flask import Flask, jsonify, request
+import controller
+from app_service import AppService
+
+app = Flask(__name__)
+appService = AppService();
+
+
+@app.route('/')
+def home():
+    return "Internal Server Error"
+
+@app.route("/tide/<string:id>/<string:date>/<string:token>", methods=["GET"])
+def get_game_by_id(id,date,token):
+    game = controller.get_by_id(id,date,token)
+    return jsonify(game)
+
+
+@app.route("/tide/countries", methods=["GET"])
+def get_game_by_id2():
+    game = controller.get_by_country()
+    return jsonify(game)
+
+
+@app.route("/tide/TON/<string:id>/<string:date>/<string:token>", methods=["GET"])
+def get_game_by_id3(id,date,token):
+    game = controller.get_by_id_tonga(id,date,token)
+    return jsonify(game)
+
+@app.route("/tide/VU/<string:id>/<string:date>/<string:token>", methods=["GET"])
+def get_game_by_id4(id,date,token):
+    game = controller.get_by_id_vanuatu(id,date,token)
+    return jsonify(game)
