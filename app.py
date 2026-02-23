@@ -1,7 +1,8 @@
 from flask import Flask, Blueprint, jsonify, request
 import controller
 from app_service import AppService
-
+import json
+import os
 app = Flask(__name__)
 appService = AppService()
 
@@ -39,7 +40,12 @@ def get_game_by_id5(id, date, token):
 def get_game_by_id_all(id, date, enddate, token):
     game = controller.get_by_id_all(id, date, enddate, token)
     return jsonify(game)
-
+@tide_bp.route('/tidegauges', methods=["GET"])
+def get_tide_gauges():
+    json_path = os.path.join(os.path.dirname(__file__), 'tide_gauge.json')
+    with open(json_path, 'r') as f:
+        data = json.load(f)
+    return jsonify(data)
 # --- Register the Blueprint ---
 app.register_blueprint(tide_bp)
 
