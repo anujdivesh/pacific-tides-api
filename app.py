@@ -36,6 +36,11 @@ def get_game_by_id5(id, date, token):
     game = controller.get_by_id_samoa(id, date, token)
     return jsonify(game)
 
+@tide_bp.route('/NU/<string:id>/<string:date>/<string:token>', methods=["GET"])
+def get_game_by_id6(id, date, token):
+    game = controller.get_by_id_niue(id, date, token)
+    return jsonify(game)
+
 @tide_bp.route('/all/<string:id>/<string:date>/<string:enddate>/<string:token>', methods=["GET"])
 def get_game_by_id_all(id, date, enddate, token):
     game = controller.get_by_id_all(id, date, enddate, token)

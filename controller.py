@@ -56,3 +56,13 @@ def get_by_id_samoa(id,date,token):
         return cursor.fetchall()
     else:
         return {"Error":"Invalid Request"}
+
+def get_by_id_niue(id,date,token):
+    db = get_db()
+    cursor = db.cursor()
+    statement = "SELECT * from tide WHERE station_id IN ('INT_TP024') and DATE(date_local) >= ?;"
+    cursor.execute(statement, [date])
+    if token == "6b6a1f8f5a75b760b91a414d762626c6b831774dd52802a76f41@!an":
+        return cursor.fetchall()
+    else:
+        return {"Error":"Invalid Request"}
