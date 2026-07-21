@@ -122,7 +122,7 @@ def delete_tide(station_id):
 def get_realtime_endpoints():
     return jsonify({
         "realtime-sealevel-station-api":
-            "https://oceanportal.spc.int/tide/realtime-endpoints",
+            "https://oceanportal.spc.int/tide/realtime_sealevel_stations",
         "realtime-sealevel-predictions-api":
             "https://oceanportal.spc.int/tide/predictions?start_time={date_time_start}&end_time={date_time_end}&stn_num={station_no}",
         "realtime-sealevel-data-api":

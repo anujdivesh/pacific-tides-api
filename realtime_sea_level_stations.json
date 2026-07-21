@@ -18,7 +18,8 @@
     "timezone": "Pacific/Guadalcanal",
     "network": "pac",
     "short_name": "HONIARA_SOL_IS",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "SB.png"
   },
   {
     "stn_num": "200871",
@@ -39,7 +40,8 @@
     "timezone": "Pacific/Efate",
     "network": "pac",
     "short_name": "LUGANVILLE_VAN",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "VU.png"
   },
   {
     "stn_num": "200862",
@@ -60,7 +62,8 @@
     "timezone": "Pacific/Port_Moresby",
     "network": "pac",
     "short_name": "MANUS_PNG",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "PNG.png"
   },
   {
     "stn_num": "200861",
@@ -81,7 +84,8 @@
     "timezone": null,
     "network": "pac",
     "short_name": "NUKUALOFA_TONGA",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "TO.png"
   },
   {
     "stn_num": "200882",
@@ -102,7 +106,8 @@
     "timezone": "Pacific/Guadalcanal",
     "network": "pac",
     "short_name": "LATA_SOL_IS",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "SB.png"
   },
   {
     "stn_num": "200299",
@@ -123,7 +128,8 @@
     "timezone": null,
     "network": "pac",
     "short_name": "KIRIBATI",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "KI.png"
   },
   {
     "stn_num": "200881",
@@ -144,7 +150,8 @@
     "timezone": "Pacific/Guadalcanal",
     "network": "pac",
     "short_name": "TARO_SOL_IS",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "SB.png"
   },
   {
     "stn_num": "200814",
@@ -165,7 +172,8 @@
     "timezone": "Pacific/Apia",
     "network": "pac",
     "short_name": "SAMOA",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "WS.png"
   },
   {
     "stn_num": "200832",
@@ -186,7 +194,8 @@
     "timezone": null,
     "network": "pac",
     "short_name": "MARSHALL_IS",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "MH.png"
   },
   {
     "stn_num": "200864",
@@ -207,7 +216,8 @@
     "timezone": null,
     "network": "pac",
     "short_name": "FSM",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "FM.png"
   },
   {
     "stn_num": "200857",
@@ -228,7 +238,8 @@
     "timezone": "Pacific/Efate",
     "network": "pac",
     "short_name": "PORT_VILLA_VAN",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "VU.png"
   },
   {
     "stn_num": "200860",
@@ -249,7 +260,8 @@
     "timezone": "Pacific/Funafuti",
     "network": "pac",
     "short_name": "TUVALU",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "TV.png"
   },
   {
     "stn_num": "200856",
@@ -270,7 +282,8 @@
     "timezone": "Pacific/Fiji",
     "network": "pac",
     "short_name": "LAUTOKA_FIJI",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "FJ.png"
   },
   {
     "stn_num": "200855",
@@ -291,7 +304,8 @@
     "timezone": null,
     "network": "pac",
     "short_name": "COOK_IS",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "CK.png"
   },
   {
     "stn_num": "200863",
@@ -312,7 +326,8 @@
     "timezone": "Pacific/Fiji",
     "network": "pac",
     "short_name": "SUVA_FIJI",
-    "status": -141.31577910055555
+    "status": -141.31577910055555,
+    "flag": "FJ.png"
   },
   {
     "stn_num": "200891",
@@ -333,12 +348,13 @@
     "timezone": null,
     "network": "pac",
     "short_name": "NIUE",
-    "status": -173.06577910055555
+    "status": -173.06577910055555,
+    "flag": "NU.png"
   },
   {
     "stn_num": "200858",
-    "stn_name": "NAURU NTC AWS",
-    "country": "Nauru",
+    "stn_name": "Naoero NTC AWS",
+    "country": "Naoero",
     "latitude": -0.5319,
     "longitude": 166.9092,
     "elevation": 0.0,
@@ -347,13 +363,14 @@
     "callsign": "nr",
     "ip_address": null,
     "sensor_hierarchy": "3,4,2",
-    "disp_name": "Nauru",
+    "disp_name": "Naoero",
     "active_sensor": 2,
     "aac": "INT_TP007",
     "antt": "67640",
     "timezone": "Pacific/Nauru",
     "network": "pac",
-    "short_name": "NAURU",
-    "status": -173.06577910055555
+    "short_name": "NAOERO",
+    "status": -173.06577910055555,
+    "flag": "NR.png"
   }
 ]
