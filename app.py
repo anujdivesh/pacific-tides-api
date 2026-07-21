@@ -110,7 +110,7 @@ def get_realtime_endpoints():
         "realtime-sealevel-station-api":
             "https://sea-level-dev.cosppac.cloud//api/stations/",
         "realtime-sealevel-predictions-api":
-            "https://sea-level-dev.cosppac.cloud//api/tide_predictions/?start_time={date_time_start}&end_time={date_time_end}&stn_num={station_no}",
+            "https://oceanportal.spc.int/tide/predictions?start_time={date_time_start}&end_time={date_time_end}&stn_num={station_no}",
         "realtime-sealevel-data-api":
             "https://sea-level-dev.cosppac.cloud//api/get_obs?start_time={date_time_start}&end_time={date_time_end}&stn_num={station_no}&step=1",
     })
