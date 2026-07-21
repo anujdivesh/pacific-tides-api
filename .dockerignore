@@ -1,0 +1,27 @@
+# Keep the image small and free of secrets / large data.
+.git
+.gitignore
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+venv/
+.venv/
+env/
+
+# Secrets — injected at runtime via environment, never baked into the image.
+.env
+.env.*
+
+# Large database — mounted as a volume at runtime, not copied into the image.
+tidal.db
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Local-only tooling
+push_db_to_wasabi.py
+tests/
+docs/

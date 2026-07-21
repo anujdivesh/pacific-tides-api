@@ -1,13 +1,15 @@
-#version: '3.8'
-
 services:
   flask-app:
     build: .
     ports:
       - "8090:5000"
     environment:
-      - FLASK_ENV=production
-      - PORT=5000
+      # Injected at runtime (kept out of the image). Read from the local .env
+      # file by docker compose, or from the host environment.
+      - SECRET_TOKEN=${SECRET_TOKEN}
     volumes:
-      - .:/app
+      # Persist the SQLite database on the host instead of baking it into the
+      # image. tidal.db must exist here before `docker compose up`
+      # (pull it with ./pull_db_from_wasabi.sh).
+      - ./tidal.db:/opt/app/tidal.db
     restart: unless-stopped
