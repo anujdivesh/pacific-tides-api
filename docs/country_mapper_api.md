@@ -118,9 +118,12 @@ Unknown station_id → `404 Not Found`:
 { "Error": "Not found" }
 ```
 
-## Delete a row
+## Delete a row (soft delete)
 
 `DELETE /tide/country_mapper/<station_id>`
+
+This is a **soft delete** — the row is not removed. It is flagged inactive by
+setting `has_updates = 1` (true) and `status = "N"`.
 
 ```bash
 curl -X DELETE http://localhost:5000/tide/country_mapper/INT_TP001 \

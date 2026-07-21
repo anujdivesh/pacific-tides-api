@@ -101,13 +101,20 @@ def update_country_mapper(station_id, data):
 
 
 def delete_country_mapper(station_id):
-    """Delete a country_mapper row identified by station_id."""
+    """Soft-delete a country_mapper row identified by station_id.
+
+    Does not remove the row; instead flags it as inactive by setting
+    has_updates = 1 (true) and status = 'N'.
+    """
     db = get_db()
     cursor = db.cursor()
     if not _station_exists(cursor, station_id):
         return {"Error": "Not found"}, 404
 
-    cursor.execute("DELETE FROM country_mapper WHERE station_id = ?;", [station_id])
+    cursor.execute(
+        "UPDATE country_mapper SET has_updates = 1, status = 'N' WHERE station_id = ?;",
+        [station_id],
+    )
     db.commit()
     return {"message": "Deleted", "station_id": station_id}, 200
 
