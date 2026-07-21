@@ -17,6 +17,9 @@ env/
 .env.*
 !.env.example
 
+# Local-only scripts (contain credentials / infra details)
+push_db_to_wasabi.py
+
 # Editor / OS
 .DS_Store
 .vscode/
