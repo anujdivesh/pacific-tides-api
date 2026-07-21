@@ -4,6 +4,9 @@ from app_service import AppService
 import json
 import os
 app = Flask(__name__)
+# Preserve dict insertion order in JSON responses (don't sort keys alphabetically).
+app.config['JSON_SORT_KEYS'] = False
+app.json.sort_keys = False
 appService = AppService()
 
 # Create a Blueprint with prefix `/tide`
@@ -45,6 +48,16 @@ def get_game_by_id6(id, date, token):
 def get_game_by_id_all(id, date, enddate, token):
     game = controller.get_by_id_all(id, date, enddate, token)
     return jsonify(game)
+@tide_bp.route('/predictions', methods=["GET"])
+def get_tide_predictions():
+    station_no = request.args.get('station_no')
+    start = request.args.get('start')
+    end = request.args.get('end')
+    if not station_no or not start or not end:
+        return jsonify({"Error": "station_no, start and end are required"}), 400
+    predictions = controller.get_tide_predictions(station_no, start, end)
+    return jsonify(predictions)
+
 @tide_bp.route('/tidegauges', methods=["GET"])
 def get_tide_gauges():
     json_path = os.path.join(os.path.dirname(__file__), 'tide_gauge.json')

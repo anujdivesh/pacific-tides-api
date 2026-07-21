@@ -66,3 +66,15 @@ def get_by_id_niue(id,date,token):
         return cursor.fetchall()
     else:
         return {"Error":"Invalid Request"}
+
+def get_tide_predictions(station_no, start, end):
+    db = get_db()
+    cursor = db.cursor()
+    statement = (
+        "SELECT utc, height FROM tide_predictions "
+        "WHERE station_no = ? AND utc >= ? AND utc <= ? "
+        "ORDER BY utc;"
+    )
+    cursor.execute(statement, [station_no, start, end])
+    rows = cursor.fetchall()
+    return [{"utc": r[0], "height": r[1]} for r in rows]
