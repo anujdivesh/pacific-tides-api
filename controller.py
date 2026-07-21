@@ -17,6 +17,13 @@ def get_by_country():
     cursor.execute(statement)
     return cursor.fetchall()
 
+def get_countries_with_updates():
+    db = get_db()
+    cursor = db.cursor()
+    statement = "SELECT * from country_mapper WHERE has_updates = 1;"
+    cursor.execute(statement)
+    return cursor.fetchall()
+
 def get_by_id_tonga(id,date,token):
     db = get_db()
     cursor = db.cursor()

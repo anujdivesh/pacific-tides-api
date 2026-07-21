@@ -25,6 +25,11 @@ def get_game_by_id2():
     game = controller.get_by_country()
     return jsonify(game)
 
+@tide_bp.route('/countries/updates', methods=["GET"])
+def get_countries_with_updates():
+    game = controller.get_countries_with_updates()
+    return jsonify(game)
+
 @tide_bp.route('/TON/<string:id>/<string:date>/<string:token>', methods=["GET"])
 def get_game_by_id3(id, date, token):
     game = controller.get_by_id_tonga(id, date, token)
