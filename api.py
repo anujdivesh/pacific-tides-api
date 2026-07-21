@@ -100,6 +100,18 @@ def update_country_mapper(station_id, data):
     return {"message": "Updated", "station_id": station_id}, 200
 
 
+def delete_country_mapper(station_id):
+    """Delete a country_mapper row identified by station_id."""
+    db = get_db()
+    cursor = db.cursor()
+    if not _station_exists(cursor, station_id):
+        return {"Error": "Not found"}, 404
+
+    cursor.execute("DELETE FROM country_mapper WHERE station_id = ?;", [station_id])
+    db.commit()
+    return {"message": "Deleted", "station_id": station_id}, 200
+
+
 def add_tide(data):
     """Insert a tide record.
 

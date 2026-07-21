@@ -86,6 +86,13 @@ def update_country_mapper(station_id):
     result, status = api.update_country_mapper(station_id, request.get_json(silent=True) or {})
     return jsonify(result), status
 
+@tide_bp.route('/country_mapper/<string:station_id>', methods=["DELETE"])
+def delete_country_mapper(station_id):
+    if not api.verify_token(request.headers.get('X-Secret-Token')):
+        return jsonify({"Error": "Unauthorized"}), 401
+    result, status = api.delete_country_mapper(station_id)
+    return jsonify(result), status
+
 @tide_bp.route('/tides', methods=["POST"])
 def add_tide():
     if not api.verify_token(request.headers.get('X-Secret-Token')):

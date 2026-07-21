@@ -118,6 +118,27 @@ Unknown station_id → `404 Not Found`:
 { "Error": "Not found" }
 ```
 
+## Delete a row
+
+`DELETE /tide/country_mapper/<station_id>`
+
+```bash
+curl -X DELETE http://localhost:5000/tide/country_mapper/INT_TP001 \
+  -H "X-Secret-Token: $SECRET_TOKEN"
+```
+
+Response `200 OK`:
+
+```json
+{ "message": "Deleted", "station_id": "INT_TP001" }
+```
+
+Unknown station_id → `404 Not Found`:
+
+```json
+{ "Error": "Not found" }
+```
+
 ## Error responses
 
 | Status | Body                                        | Meaning                          |
