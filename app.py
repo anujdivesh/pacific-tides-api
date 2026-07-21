@@ -52,11 +52,11 @@ def get_game_by_id_all(id, date, enddate, token):
 
 @tide_bp.route('/predictions', methods=["GET"])
 def get_tide_predictions():
-    station_no = request.args.get('station_no')
-    start = request.args.get('start')
-    end = request.args.get('end')
+    station_no = request.args.get('stn_num')
+    start = request.args.get('start_time')
+    end = request.args.get('end_time')
     if not station_no or not start or not end:
-        return jsonify({"Error": "station_no, start and end are required"}), 400
+        return jsonify({"Error": "stn_num, start_time and end_time are required"}), 400
     predictions = controller.get_tide_predictions(station_no, start, end)
     return jsonify(predictions)
 
@@ -98,6 +98,17 @@ def delete_tide(station_id):
         request.args.get('direction', 'before'),
     )
     return jsonify(result), status
+
+@tide_bp.route('/realtime-endpoints', methods=["GET"])
+def get_realtime_endpoints():
+    return jsonify({
+        "realtime-sealevel-station-api":
+            "https://sea-level-dev.cosppac.cloud//api/stations/",
+        "realtime-sealevel-predictions-api":
+            "https://sea-level-dev.cosppac.cloud//api/tide_predictions/?start_time={date_time_start}&end_time={date_time_end}&stn_num={station_no}",
+        "realtime-sealevel-data-api":
+            "https://sea-level-dev.cosppac.cloud//api/get_obs?start_time={date_time_start}&end_time={date_time_end}&stn_num={station_no}&step=1",
+    })
 
 @tide_bp.route('/predictions', methods=["POST"])
 def add_tide_prediction():
