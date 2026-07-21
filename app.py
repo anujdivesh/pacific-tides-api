@@ -1,5 +1,6 @@
 from flask import Flask, Blueprint, jsonify, request
 import controller
+import api
 from app_service import AppService
 import json
 import os
@@ -48,6 +49,7 @@ def get_game_by_id6(id, date, token):
 def get_game_by_id_all(id, date, enddate, token):
     game = controller.get_by_id_all(id, date, enddate, token)
     return jsonify(game)
+
 @tide_bp.route('/predictions', methods=["GET"])
 def get_tide_predictions():
     station_no = request.args.get('station_no')
@@ -64,6 +66,57 @@ def get_tide_gauges():
     with open(json_path, 'r') as f:
         data = json.load(f)
     return jsonify(data)
+
+@tide_bp.route('/country_mapper', methods=["POST"])
+def add_country_mapper():
+    if not api.verify_token(request.headers.get('X-Secret-Token')):
+        return jsonify({"Error": "Unauthorized"}), 401
+    result, status = api.add_country_mapper(request.get_json(silent=True) or {})
+    return jsonify(result), status
+
+@tide_bp.route('/country_mapper/<string:station_id>', methods=["PUT"])
+def update_country_mapper(station_id):
+    if not api.verify_token(request.headers.get('X-Secret-Token')):
+        return jsonify({"Error": "Unauthorized"}), 401
+    result, status = api.update_country_mapper(station_id, request.get_json(silent=True) or {})
+    return jsonify(result), status
+
+@tide_bp.route('/tides', methods=["POST"])
+def add_tide():
+    if not api.verify_token(request.headers.get('X-Secret-Token')):
+        return jsonify({"Error": "Unauthorized"}), 401
+    result, status = api.add_tide(request.get_json(silent=True) or {})
+    return jsonify(result), status
+
+@tide_bp.route('/tides/<string:station_id>', methods=["DELETE"])
+def delete_tide(station_id):
+    if not api.verify_token(request.headers.get('X-Secret-Token')):
+        return jsonify({"Error": "Unauthorized"}), 401
+    result, status = api.delete_tide(
+        station_id,
+        request.args.get('end_date'),
+        request.args.get('direction', 'before'),
+    )
+    return jsonify(result), status
+
+@tide_bp.route('/predictions', methods=["POST"])
+def add_tide_prediction():
+    if not api.verify_token(request.headers.get('X-Secret-Token')):
+        return jsonify({"Error": "Unauthorized"}), 401
+    result, status = api.add_tide_prediction(request.get_json(silent=True) or {})
+    return jsonify(result), status
+
+@tide_bp.route('/predictions/<string:station_no>', methods=["DELETE"])
+def delete_tide_prediction(station_no):
+    if not api.verify_token(request.headers.get('X-Secret-Token')):
+        return jsonify({"Error": "Unauthorized"}), 401
+    result, status = api.delete_tide_prediction(
+        station_no,
+        request.args.get('end_date'),
+        request.args.get('direction', 'before'),
+    )
+    return jsonify(result), status
+
 # --- Register the Blueprint ---
 app.register_blueprint(tide_bp)
 
