@@ -72,6 +72,13 @@ def get_tide_gauges():
         data = json.load(f)
     return jsonify(data)
 
+@tide_bp.route('/realtime_sealevel_stations', methods=["GET"])
+def get_realtime_sealevel_stations():
+    json_path = os.path.join(os.path.dirname(__file__), 'realtime_sea_level_stations.json')
+    with open(json_path, 'r') as f:
+        data = json.load(f)
+    return jsonify(data)
+
 @tide_bp.route('/country_mapper', methods=["POST"])
 def add_country_mapper():
     if not api.verify_token(request.headers.get('X-Secret-Token')):
@@ -115,7 +122,7 @@ def delete_tide(station_id):
 def get_realtime_endpoints():
     return jsonify({
         "realtime-sealevel-station-api":
-            "https://sea-level-dev.cosppac.cloud//api/stations/",
+            "https://oceanportal.spc.int/tide/realtime-endpoints",
         "realtime-sealevel-predictions-api":
             "https://oceanportal.spc.int/tide/predictions?start_time={date_time_start}&end_time={date_time_end}&stn_num={station_no}",
         "realtime-sealevel-data-api":
