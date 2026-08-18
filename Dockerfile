@@ -12,4 +12,6 @@ EXPOSE 5000
 
 # Run under Gunicorn (production WSGI server), not the Flask dev server.
 # `app:app` = the `app` Flask instance in app.py.
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "3", "--timeout", "120", "app:app"]
+# 3 sync workers = only 3 concurrent requests; a few slow ones queue everyone
+# else. Threads raise concurrency cheaply here since SQLite reads release the GIL.
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "3", "--threads", "4", "--timeout", "120", "app:app"]
