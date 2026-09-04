@@ -74,6 +74,16 @@ def get_by_id_niue(id,date,token):
     else:
         return {"Error":"Invalid Request"}
 
+def get_by_id_solomon(id,date,token):
+    db = get_db()
+    cursor = db.cursor()
+    statement = "SELECT * from tide WHERE station_id IN ('INT_TP023') and DATE(date_local) >= ?;"
+    cursor.execute(statement, [date])
+    if token == "6b6a1f8f5a75b760b91a414d762626c6b831774dd52802a76f41@!sb7":
+        return cursor.fetchall()
+    else:
+        return {"Error":"Invalid Request"}
+
 def get_tide_predictions(station_no, start, end):
     db = get_db()
     cursor = db.cursor()
